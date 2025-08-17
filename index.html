@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Assignment Solutions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;   /* Dark background */
+      margin: 0;
+      padding: 20px;
+      color: #f0e6ff;        /* Light text */
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #b388ff; /* Purple heading */
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 18px;
+      color: #d1c4e9;
+    }
+
+    /* Fixed 4 cards per row */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1100px;
+    }
+
+    .card {
+      background: #1e1e2f;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+      background: #292945;
+    }
+
+    .card button {
+      padding: 12px;
+      border: none;
+      background: #8e44ad;   /* Purple button */
+      color: white;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .card button:hover {
+      background: #9b59b6;
+    }
+
+    #output {
+      margin-top: 40px;
+      padding: 20px;
+      border: 2px solid #8e44ad;
+      border-radius: 12px;
+      background: #1c1c2a;
+      font-size: 16px;
+      min-height: 80px;
+      white-space: pre-line;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    /* For mobiles, make it 2 per row */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* For very small screens, 1 per row */
+    @media (max-width: 480px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JS Assignment Solutions</h1>
+    <p>Choose a question card to view solution</p>
+  </header>
+
+  <div class="container">
+    <div class="card"><button onclick="q1()">1. Divisible by 6 & 9</button></div>
+    <div class="card"><button onclick="q2()">2. Eligible to Vote</button></div>
+    <div class="card"><button onclick="q3()">3. Relational Operators</button></div>
+    <div class="card"><button onclick="q4()">4. Grading System</button></div>
+    <div class="card"><button onclick="q5()">5. Character to Value</button></div>
+    <div class="card"><button onclick="q6()">6. Largest of Three</button></div>
+    <div class="card"><button onclick="q7()">7. Second Smallest</button></div>
+    <div class="card"><button onclick="q8()">8. Triangle Type</button></div>
+    <div class="card"><button onclick="q9()">9. Count Digits</button></div>
+    <div class="card"><button onclick="q10()">10. Count 5’s</button></div>
+    <div class="card"><button onclick="q11()">11. Sum of Even Numbers</button></div>
+    <div class="card"><button onclick="q12()">12. Sum of Digits</button></div>
+    <div class="card"><button onclick="q13()">13. Pattern Printing</button></div>
+    <div class="card"><button onclick="q14()">14. Prime Number Check</button></div>
+    <div class="card"><button onclick="q15()">15. Print 1 to N</button></div>
+    <div class="card"><button onclick="q16()">16. Multiplication Table</button></div>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    let output = document.getElementById("output");
+
+    function q1(){ let n = +prompt("Enter a number: "); output.innerText = (n % 6 === 0 && n % 9 === 0) ? `${n} is divisible by both 6 and 9` : `${n} is not divisible by both 6 and 9`; }
+    function q2(){ let age = +prompt("Enter age: "); output.innerText = (age >= 18) ? "Eligible to vote" : "Not eligible to vote"; }
+    function q3(){ let X = +prompt("Enter X: "); let Y = +prompt("Enter Y: "); output.innerText = (X < Y) ? "X is smaller than Y" : (X > Y) ? "X is greater than Y" : "X is equal to Y"; }
+    function q4(){ let M = +prompt("Enter marks (out of 50): "); let grade; switch(Math.floor(M/10)){ case 0: case 1: grade = "E"; break; case 2: grade = "D"; break; case 3: grade = "C"; break; case 4: grade = "B"; break; case 5: grade = "A"; break; default: grade = "Invalid Marks"; } output.innerText = "Grade: " + grade; }
+    function q5(){ let ch = prompt("Enter a character: "); switch(ch){ case 'P': case 'p': output.innerText = "PrepBytes"; break; case 'Z': case 'z': output.innerText = "Zenith"; break; case 'E': case 'e': output.innerText = "Expert Coder"; break; case 'D': case 'd': output.innerText = "Data Structure"; break; default: output.innerText = "Invalid Input"; } }
+    function q6(){ let a = +prompt("Enter first number: "); let b = +prompt("Enter second number: "); let c = +prompt("Enter third number: "); if(a === b && b === c){ output.innerText = "All numbers are same"; } else { output.innerText = "Largest number is " + Math.max(a, b, c); } }
+    function q7(){ let arr = [ +prompt("Enter first number: "), +prompt("Enter second number: "), +prompt("Enter third number: ") ]; arr.sort((x,y)=>x-y); output.innerText = "Second smallest is " + arr[1]; }
+    function q8(){ let a1 = +prompt("Enter first angle: "); let b1 = +prompt("Enter second angle: "); let c1 = +prompt("Enter third angle: "); if(a1+b1+c1 === 180){ if(a1 < 90 && b1 < 90 && c1 < 90) output.innerText = "Acute Triangle"; else if(a1===90 || b1===90 || c1===90) output.innerText = "Right Triangle"; else output.innerText = "Obtuse Triangle"; } else { output.innerText = "Invalid Triangle"; } }
+    function q9(){ let num = +prompt("Enter number: "), count=0, temp=num; while(temp>0){ count++; temp=Math.floor(temp/10); } output.innerText = "Number of digits: " + count; }
+    function q10(){ let num = +prompt("Enter number: "), count5=0, t=num; while(t>0){ if(t%10===5) count5++; t=Math.floor(t/10); } output.innerText = "Number of 5's: " + count5; }
+    function q11(){ let N = +prompt("Enter N: "), sum=0; for(let i=2;i<=N;i+=2) sum+=i; output.innerText = "Sum of even numbers: " + sum; }
+    function q12(){ let num = +prompt("Enter number: "), sum=0; while(num>0){ sum+=num%10; num=Math.floor(num/10); } output.innerText = "Sum of digits: " + sum; }
+    function q13(){ let lines = +prompt("Enter number of lines: "); let str=""; for(let i=1;i<=lines;i++){ str+="*".repeat(i)+"\n"; } output.innerText = str; }
+    function q14(){ let n = +prompt("Enter number: "); let isPrime=true; if(n<=1) isPrime=false; for(let i=2;i*i<=n;i++){ if(n%i===0){ isPrime=false; break; } } output.innerText = isPrime ? "Prime Number" : "Not Prime Number"; }
+    function q15(){ let N = +prompt("Enter N: "); let nums=""; for(let i=1;i<=N;i++){ nums+=i+" "; } output.innerText = nums; }
+    function q16(){ let num = +prompt("Enter number: "), table=""; for(let i=1;i<=10;i++){ table+=`${num} x ${i} = ${num*i}\n`; } output.innerText = table; }
+  </script>
+</body>
+</html>
